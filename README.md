@@ -205,3 +205,31 @@ Aqui estão as melhores práticas extraídas das fontes para estruturar a sua ap
 **4. Oculte o Banco de Dados com DTOs (Data Transfer Objects)** Do ponto de vista de design, mostre que você entende de segurança e padrões corporativos. Ao desenhar ou explicar a sua arquitetura, enfatize que as suas entidades de banco de dados não são vazadas para o cliente. Explique que você utiliza Response DTOs para expor apenas os campos que a aplicação parceira ou o front-end realmente precisam para operar, protegendo dados sensíveis.
 
 Ao estruturar a documentação do seu projeto unindo a explicação clara do problema (os ODS da ONU), diagramas visuais de como os sistemas (ou microsserviços) se integram para resolvê-lo e a explicação de como o sistema suporta falhas, você demonstrará exatamente o nível de maturidade técnica e visão de produto que empresas seniores buscam.
+
+### Prompt:
+Como um desenvolvedor focado em backend pode utilizar conhecimentos de prototipagem e design de interfaces (como no Figma) para documentar os contratos de API e apresentar o projeto de uma forma visualmente mais profissional no GitHub?
+
+### Resposta do Notebook:
+Embora as fontes fornecidas não mencionem explicitamente o uso do Figma ou de ferramentas de design de interfaces, elas enfatizam fortemente a importância de apresentar o projeto de forma profissional, utilizar diagramas arquiteturais e criar contratos de API claros para a equipe de frontend.
+
+Combinando as diretrizes técnicas das fontes com conhecimentos práticos de mercado sobre ferramentas de prototipagem (esta aplicação específica do Figma é uma informação externa às fontes, que atua como um complemento estratégico aos pontos mencionados), aqui está como você pode usar o design para destacar o seu portfólio de backend:
+
+**1. Transforme Contratos de API (DTOs) em Mapas Visuais** As fontes destacam que uma das práticas mais importantes em produção é utilizar DTOs (Data Transfer Objects) e um Wrapper Customizado de Resposta (Custom API Response Wrapper) para não expor as entidades do banco de dados e garantir que a equipe de frontend receba sempre um formato JSON previsível.
+
+- **Como usar o Figma (Info externa):** Em vez de apenas colocar um bloco de código JSON no README do GitHub, você pode desenhar no Figma um "Mapa de Contrato". De um lado, coloque a estrutura do seu JSON de resposta padronizado; do outro, desenhe um protótipo de baixa fidelidade (um wireframe) da tela do aplicativo, puxando setas de cada campo do JSON (como user.firstName ou activity.duration) diretamente para o componente visual correspondente na interface.
+
+- **O impacto:** Isso mostra ao recrutador que você constrói o backend com empatia pelo frontend e entende exatamente como os seus dados serão consumidos na prática. Como as fontes apontam, as equipes de frontend "agradecerão por nunca mais precisarem adivinhar o formato da resposta".
+
+**2. Crie Diagramas de Arquitetura e Fluxo Profissionais** Ter documentos de decisão técnica e diagramas arquiteturais é uma prática rara até mesmo em sistemas de produção, e incluí-los no seu projeto fará você se destacar imensamente.
+
+Como usar o Figma (Info externa): Utilize o Figma para desenhar diagramas bonitos e com a identidade visual do projeto. Mostre visualmente a arquitetura em camadas do Spring Boot, ilustrando como o cliente se conecta ao API Gateway, como a segurança intercepta a requisição (ex: fluxo OAuth2/PKCE) e como a camada de Service se comunica de forma assíncrona com as filas de mensageria (RabbitMQ) e com os bancos de dados.
+
+**3. Apresentação do README** como uma Landing Page (O Pitch Visual) A forma como você apresenta o seu projeto importa tanto quanto a construção do código. Um bom projeto deve contar uma história, ter um "pitch" de uma linha e demonstrar claramente qual problema real resolve.
+
+- **Como usar o Figma (Info externa):** Crie uma imagem de capa atrativa (banner) para o topo do seu README no GitHub. Você pode criar infográficos no Figma comparando o "Problema" versus a "Solução que a sua API oferece". O visual prende a atenção do recrutador em segundos, enquanto a profundidade técnica do texto valida as suas habilidades.
+
+**4. Demonstre a Experiência do Produto Final** As fontes afirmam que projetos empregáveis resolvem problemas reais e vão além da perspectiva exclusiva do desenvolvedor, gerando impacto de negócio. Mostrar como o backend alimenta gráficos ou ferramentas financeiras demonstra raciocínio full-stack.
+
+- **Como usar o Figma (Info externa):** Se você não tem tempo (ou interesse) para codificar a interface em React ou Angular usando bibliotecas como o Material UI, você pode desenhar telas de alta fidelidade no Figma ilustrando a visão final do produto. Adicione essas imagens ao GitHub explicando: "Embora este seja um projeto focado em backend (disponibilizado via API RESTful), esta é a visão da interface projetada para consumir as métricas assíncronas geradas pela inteligência artificial".
+
+Unir a robustez de um código corporativo bem estruturado com uma documentação visualmente polida demonstra que você não é apenas um "digitador de código", mas um Engenheiro de Software com visão de produto.
