@@ -1,10 +1,10 @@
 # guia-estudos-notebooklm
 
 # 💬 Contexto:
-### Esse repositório faz parte de um desafio de um bootcamp da DIO. O desafio propõe a criação de um caderno temático no Gemini Notebook (antigo NotebookLM), reunindo de três a cinco fontes abertas em texto ou PDF sobre um assunto determinado pelo o aluno. A partir desse material, são definidos objetivos de estudo, elaboradas perguntas estratégicas e testadas variações de prompts, registrando as respostas e suas referências. O resultado esperado é um miniguia de estudo com resumos estruturados, glossário de conceitos e um conjunto de prompts reutilizáveis que apoiem futuras revisões. A atividade enfatiza o uso da IA como ferramenta de aprendizagem ativa, aliando pensamento crítico, curadoria de fontes e organização do conhecimento.
+Esse repositório faz parte de um desafio de um bootcamp da DIO. O desafio propõe a criação de um caderno temático no Gemini Notebook (antigo NotebookLM), reunindo de três a cinco fontes abertas em texto ou PDF sobre um assunto determinado pelo o aluno. A partir desse material, são definidos objetivos de estudo, elaboradas perguntas estratégicas e testadas variações de prompts, registrando as respostas e suas referências. O resultado esperado é um miniguia de estudo com resumos estruturados, glossário de conceitos e um conjunto de prompts reutilizáveis que apoiem futuras revisões. A atividade enfatiza o uso da IA como ferramenta de aprendizagem ativa, aliando pensamento crítico, curadoria de fontes e organização do conhecimento.
 
 # 🎯 Objetivo:
-### Criar segundo cérebro com o objetivo de servir como guia para enriquecer o Portfólio de um programador Java.
+Criar segundo cérebro com o objetivo de servir como guia para enriquecer o Portfólio de um programador Java.
 
 # 🎬 Fontes De Vídeo:
 - https://youtu.be/pMR_48AF-A0?si=9WN8QtDXW_uAwHUU
@@ -62,3 +62,46 @@ Aqui estão as melhores práticas baseadas no que o mercado de engenharia de sof
 - **Ferramentas Próprias (Deep Dive):** Para impressionar tecnicamente, crie as suas próprias versões de ferramentas famosas do zero, como o seu próprio banco de dados em memória (Redis), a sua versão do Git, ou um servidor HTTP.
 
 - **Automação e Produtividade para Devs:** Um Standup Bot integrado ao Slack com análise de impedimentos recorrentes ou um rastreador de despesas financeiras com visualização de dados focado em gastos com ferramentas de desenvolvimento e hospedagem.
+
+### Prompt:
+Para uma pessoa que está desenvolvendo aplicações em Java, qual deveria ser o foco para destacar o portfólio?
+
+### Resposta do Notebook:
+Para se destacar desenvolvendo aplicações em Java, especialmente utilizando o ecossistema Spring Boot, o seu foco deve ser demonstrar padrões de código de nível corporativo (enterprise-level), saindo do escopo de um simples CRUD genérico para abraçar a complexidade real de sistemas.
+
+Aqui estão os pontos centrais nos quais você deve focar ao construir o seu portfólio em Java:
+
+**1. Arquitetura em Camadas e Boas Práticas (Spring Boot)** O código deve ser fácil de ler e seguir uma arquitetura clara:
+
+- **Separação rigorosa de responsabilidades:** Utilize Controllers finos apenas para receber requisições, Services para toda a lógica de negócios e Repositories para a camada de acesso aos dados.
+
+- **Use DTOs (Data Transfer Objects):** Nunca exponha as suas Entidades de banco de dados diretamente para o cliente, pois isso vaza a estrutura do banco e pode expor dados sensíveis.
+
+- **Padronização de Respostas e Exceções:** Crie um wrapper customizado para as respostas da sua API, garantindo que o front-end sempre receba um formato JSON previsível. Utilize tratamentos globais de exceções (como o @ControllerAdvice no Spring) em vez de espalhar blocos try-catch pelo código.
+
+- **Transição para Microsserviços:** Estruture os seus pacotes com base em funcionalidades (features). Essa é uma decisão estratégica que demonstra visão de longo prazo, facilitando a quebra de um monólito em microsserviços quando a aplicação crescer.
+
+
+2. **Domínio de Ferramentas Corporativas e Padrões de Projeto** Recrutadores seniores procuram por desenvolvedores que compreendam os bastidores e os padrões estabelecidos:
+
+- **Mapeamento de Dados e ORMs:** Demonstre forte compreensão de Injeção de Dependências e uso de ORMs (como JPA/Hibernate) para converter as suas classes Java automaticamente em tabelas relacionais.
+
+- **AOP (Programação Orientada a Aspectos):** Mostre que você sabe lidar com preocupações transversais, como registrar logs de execução e monitorar o desempenho, isolando isso em aspectos para não poluir a sua lógica de negócios principal.
+
+- **Testes de Integração:** Adicione testes robustos usando bancos de dados em memória ou contêineres reais (utilizando o Testcontainers com Docker) para simular o ambiente de produção.
+
+- **Migrações de Banco de Dados:** Evite criar tabelas com scripts manuais de SQL no ambiente de produção. Utilize ferramentas de migração de esquema, como o Flyway, para que o versionamento do seu banco ande junto com o seu código.
+
+3. **Arquitetura de Microsserviços e Sistemas Distribuídos** Uma forma excelente de se destacar é construir um projeto onde vários serviços precisam se comunicar de forma distribuída:
+
+- Crie um **API Gateway** como ponto de entrada único para o roteamento de todas as requisições, escondendo os endereços internos dos seus microsserviços.
+
+- Utilize o padrão de **Service Discovery** (como o Eureka Server do Spring Cloud Netflix) para que os serviços se localizem e se comuniquem dinamicamente sem endereços IP hardcoded.
+
+- Gerencie configurações de forma centralizada utilizando o **Spring Cloud Config Server**, para que nenhuma senha ou credencial fique diretamente no repositório de código.
+
+**4. Processamento Assíncrono e Mensageria** Um grande diferencial é implementar comunicação assíncrona orientada a eventos para processos lentos, o que aumenta a resiliência do sistema. Use Message Queues (filas de mensageria), como o **RabbitMQ** ou o Kafka, para permitir que um serviço em Java publique um evento e outro o consuma no background (processamento em lote ou batch), mesmo que o consumidor esteja momentaneamente fora do ar.
+
+**5. Segurança Robusta e Gerenciamento de Identidade** Ir além do básico de "login com e-mail e senha" demonstra muita maturidade. Integre a sua aplicação Java a um sistema provedor de identidade Open Source, como o Keycloak, implementando os fluxos padrão de mercado como OAuth2 (usando PKCE), Single Sign-On (SSO) e Role-Based Access Control (RBAC).
+
+**Dica Extra (Inovação):** Projetos que conectam microsserviços Java com ferramentas modernas ganham ainda mais destaque no mercado. Por exemplo, você pode construir um microsserviço que escuta uma fila do RabbitMQ e interage nativamente com APIs de Inteligência Artificial (como o Google Gemini) para gerar dados ou recomendações, salvando-os em um banco de dados NoSQL (como o MongoDB) de maneira 100% assíncrona.
