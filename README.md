@@ -233,3 +233,39 @@ Como usar o Figma (Info externa): Utilize o Figma para desenhar diagramas bonito
 - **Como usar o Figma (Info externa):** Se você não tem tempo (ou interesse) para codificar a interface em React ou Angular usando bibliotecas como o Material UI, você pode desenhar telas de alta fidelidade no Figma ilustrando a visão final do produto. Adicione essas imagens ao GitHub explicando: "Embora este seja um projeto focado em backend (disponibilizado via API RESTful), esta é a visão da interface projetada para consumir as métricas assíncronas geradas pela inteligência artificial".
 
 Unir a robustez de um código corporativo bem estruturado com uma documentação visualmente polida demonstra que você não é apenas um "digitador de código", mas um Engenheiro de Software com visão de produto.
+
+### Prompt:
+Ao implementar comunicação assíncrona com RabbitMQ e Spring Boot, quais são os pontos de falha mais comuns (como perda de mensagens ou concorrência)? Como documentar a forma como lidei com esses erros no repositório?
+
+### Resposta do Notebook:
+A implementação de mensageria assíncrona com RabbitMQ e Spring Boot é uma excelente forma de demonstrar maturidade técnica em um portfólio. No entanto, desenvolvedores experientes sabem que a complexidade da mensageria não está no caminho feliz, mas em lidar com cenários onde a comunicação falha.
+Aqui estão os pontos de falha mais comuns nesse ecossistema e as estratégias recomendadas para documentar suas soluções no repositório:
+
+**Pontos de Falha Mais Comuns no RabbitMQ + Spring Boot**
+
+**1. Perda de Mensagens por Falta de Durabilidade (Queue Durability)** Um erro comum é criar filas não duráveis. Se o servidor do RabbitMQ reiniciar ou "crashar", as filas criadas temporariamente e todas as suas mensagens serão perdidas.
+
+- **A Solução:** Ao configurar a sua fila (Queue) no Spring, passe o parâmetro durable como true. Isso garante que a fila sobreviva a reinicializações do broker.
+
+**2. Falhas de Roteamento (Exchange e Bindings Quebrados)** No RabbitMQ, o produtor de mensagens não envia os dados diretamente para uma fila, mas sim para uma Exchange (um roteador de mensagens). Se você esquecer de vincular (fazer o binding) a sua fila à Exchange correta utilizando a Routing Key exata, a Exchange receberá a mensagem, mas não saberá para qual fila enviá-la, resultando na perda silenciosa da mensagem.
+
+**3. Consumidor Fora do Ar e Acúmulo de Fila** Sistemas distribuídos falham frequentemente. Um cenário comum é o serviço produtor estar ativo enquanto o serviço consumidor (quem lê a fila) fica fora do ar.
+
+- **O Comportamento Esperado:** O produtor deve poder continuar publicando mensagens independentemente do estado do consumidor. O RabbitMQ armazena as mensagens na fila seguindo o padrão FIFO (First-In, First-Out). Quando o serviço consumidor for restabelecido, ele consumirá e processará todo o acúmulo de mensagens pendentes.
+
+**4. Falhas de Serialização e Desserialização (Raw Bytes vs JSON)** Por padrão, o RabbitMQ trafega as mensagens em forma de arrays de bytes brutos (raw byte arrays). Se você enviar objetos complexos do Java e tentar consumi-los sem configuração adicional, haverá falhas de conversão de dados.
+
+- **A Solução:** Configurar um Bean de conversão de mensagens, como o Jackson2JsonMessageConverter, para que os objetos Java sejam automaticamente transformados em JSON limpo antes de serem enviados, eliminando a necessidade de serialização manual.
+
+**5. Integridade Transacional e Condições de Corrida** Garantir que um evento na fila seja consumido de forma idempotente (processado uma única vez) é vital. É um ponto de falha gravíssimo não saber como lidar com eventos duplicados, condições de corrida (race conditions) e a manutenção da integridade de dados assíncrona.
+
+**Como Documentar no Repositório (Para Impressionar Recrutadores)**
+
+Muitos candidatos possuem projetos bons, mas a apresentação e a ausência do registro de decisões técnicas os prejudicam. Para fazer seu portfólio brilhar:
+- **Destaque as "Cicatrizes" de Recuperação de Erros:** Projetos impressionantes de back-end se destacam pelo que o sistema faz quando as coisas dão errado. Dedique uma seção do seu README.md especificamente chamada "Tolerância a Falhas e Recuperação". Descreva claramente como o sistema lida com timeouts, eventos duplicados e como ele se recupera após as falhas.
+
+- **Documentos de Decisão (ADRs) e Diagramas Arquiteturais:** Ter diagramas que demonstrem como as peças se conectam é raríssimo de se ver em portfólios e até em sistemas de produção. Diagrame a sua arquitetura de mensageria: desenhe o Serviço Produtor, o caminho até a Exchange, a configuração da Routing Key específica e a chegada ao Serviço Consumidor.
+
+- **Explique o "Porquê" das Configurações do Spring AMQP:** Não apenas jogue o código. Crie notas no seu repositório explicando que implementou o bean Jackson2JsonMessageConverter para evitar manipulação manual de bytes e justifique a escolha de declarar a fila como durável (true) para que os dados sobrevivam a quedas da infraestrutura do RabbitMQ.
+
+- **Demonstre Testes de Integração:** Por fim, inclua no README qual foi a estratégia de testes (Testcontainers, bancos de dados em memória) utilizada para garantir que toda essa infraestrutura de eventos realmente funcione de ponta a ponta sem falhas de integração no ambiente produtivo.
