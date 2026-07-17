@@ -58,19 +58,19 @@ Estes prompts foram desenhados para serem utilizados no NotebookLM, Gemini ou Ch
 
 - **Prompt para Revisão de Arquitetura Spring:**
 
-"Estou implementando uma nova funcionalidade no meu projeto Spring Boot focada em [descreva a funcionalidade]. Atuando como um Engenheiro de Software Sênior, revise a estrutura que planejo usar (Controller, Service, Repository, DTO). Quais padrões de projeto devo aplicar para garantir que este código seja escalável, testável e não vaze regras de negócio para a camada de apresentação?"
+> "Estou implementando uma nova funcionalidade no meu projeto Spring Boot focada em [descreva a funcionalidade]. Atuando como um Engenheiro de Software Sênior, revise a estrutura que planejo usar (Controller, Service, Repository, DTO). Quais padrões de projeto devo aplicar para garantir que este código seja escalável, testável e não vaze regras de negócio para a camada de apresentação?"
 
 - **Prompt para Troubleshooting de Mensageria:**
 
-"Estou enfrentando problemas com mensagens duplicadas e perdas de conexão na minha implementação de RabbitMQ com Java. Com base nas melhores práticas do mercado, crie um checklist de configuração e código (focando em durabilidade, roteamento e idempotência) para que eu possa debugar essa falha e documentar a solução no meu README."
+> "Estou enfrentando problemas com mensagens duplicadas e perdas de conexão na minha implementação de RabbitMQ com Java. Com base nas melhores práticas do mercado, crie um checklist de configuração e código (focando em durabilidade, roteamento e idempotência) para que eu possa debugar essa falha e documentar a solução no meu README."
 
 - **Prompt para Preparação de Entrevistas (Foco em Resiliência):**
 
-"Faça o papel de um recrutador técnico avaliando meu portfólio. Meu projeto principal é uma API RESTful que lida com dados sensíveis e integrações externas. Me faça 3 perguntas difíceis sobre como minha arquitetura lida com falhas, timeouts e segurança (OAuth2/JWT). Após as minhas respostas, forneça um feedback rigoroso de como eu poderia melhorar a minha argumentação."
+> "Faça o papel de um recrutador técnico avaliando meu portfólio. Meu projeto principal é uma API RESTful que lida com dados sensíveis e integrações externas. Me faça 3 perguntas difíceis sobre como minha arquitetura lida com falhas, timeouts e segurança (OAuth2/JWT). Após as minhas respostas, forneça um feedback rigoroso de como eu poderia melhorar a minha argumentação."
 
 - **Prompt para Documentação e Visão de Produto:**
 
-"Preciso criar um Documento de Decisão Técnica (ADR) para explicar por que escolhi quebrar meu monólito atual em microsserviços. Gere um template profissional que eu possa preencher, e me dê exemplos práticos de como posso usar ferramentas de design e fluxogramas para ilustrar os contratos da API e facilitar a vida da equipe de frontend que vai consumir esses endpoints."
+> "Preciso criar um Documento de Decisão Técnica (ADR) para explicar por que escolhi quebrar meu monólito atual em microsserviços. Gere um template profissional que eu possa preencher, e me dê exemplos práticos de como posso usar ferramentas de design e fluxogramas para ilustrar os contratos da API e facilitar a vida da equipe de frontend que vai consumir esses endpoints."
 
 # 🧑‍💻 Engenharia de Prompts e "Cicatrizes":
 ### Prompt:
@@ -117,7 +117,7 @@ Aqui estão as melhores práticas baseadas no que o mercado de engenharia de sof
 - **Automação e Produtividade para Devs:** Um Standup Bot integrado ao Slack com análise de impedimentos recorrentes ou um rastreador de despesas financeiras com visualização de dados focado em gastos com ferramentas de desenvolvimento e hospedagem.
 
 ### Minha Análise:
-Essa resposta me fez rever a minha perspectiva do que o mercado busca, ao invés refazer vários CRUDs genéricos devo buscar me apronfundar em poucos projetos complexos.Quero aplicar essa regra do "Um Projeto" nos meus desenvolvimentos, focando em resolver problemas reais e demonstrar que sei lidar com desafios de arquitetura, indo muito além do que construí nos meus primeiros trabalhos do curso técnico.
+> Essa resposta me fez rever a minha perspectiva do que o mercado busca, ao invés refazer vários CRUDs genéricos devo buscar me apronfundar em poucos projetos complexos.Quero aplicar essa regra do "Um Projeto" nos meus desenvolvimentos, focando em resolver problemas reais e demonstrar que sei lidar com desafios de arquitetura, indo muito além do que construí nos meus primeiros trabalhos do curso técnico.
 
 ### Prompt:
 Para uma pessoa que está desenvolvendo aplicações em Java, qual deveria ser o foco para destacar o portfólio?
@@ -137,8 +137,7 @@ Aqui estão os pontos centrais nos quais você deve focar ao construir o seu por
 
 - **Transição para Microsserviços:** Estruture os seus pacotes com base em funcionalidades (features). Essa é uma decisão estratégica que demonstra visão de longo prazo, facilitando a quebra de um monólito em microsserviços quando a aplicação crescer.
 
-
-2. **Domínio de Ferramentas Corporativas e Padrões de Projeto** Recrutadores seniores procuram por desenvolvedores que compreendam os bastidores e os padrões estabelecidos:
+**2. Domínio de Ferramentas Corporativas e Padrões de Projeto** Recrutadores seniores procuram por desenvolvedores que compreendam os bastidores e os padrões estabelecidos:
 
 - **Mapeamento de Dados e ORMs:** Demonstre forte compreensão de Injeção de Dependências e uso de ORMs (como JPA/Hibernate) para converter as suas classes Java automaticamente em tabelas relacionais.
 
@@ -148,7 +147,7 @@ Aqui estão os pontos centrais nos quais você deve focar ao construir o seu por
 
 - **Migrações de Banco de Dados:** Evite criar tabelas com scripts manuais de SQL no ambiente de produção. Utilize ferramentas de migração de esquema, como o Flyway, para que o versionamento do seu banco ande junto com o seu código.
 
-3. **Arquitetura de Microsserviços e Sistemas Distribuídos** Uma forma excelente de se destacar é construir um projeto onde vários serviços precisam se comunicar de forma distribuída:
+**3. Arquitetura de Microsserviços e Sistemas Distribuídos** Uma forma excelente de se destacar é construir um projeto onde vários serviços precisam se comunicar de forma distribuída:
 
 - Crie um **API Gateway** como ponto de entrada único para o roteamento de todas as requisições, escondendo os endereços internos dos seus microsserviços.
 
@@ -163,7 +162,7 @@ Aqui estão os pontos centrais nos quais você deve focar ao construir o seu por
 **Dica Extra (Inovação):** Projetos que conectam microsserviços Java com ferramentas modernas ganham ainda mais destaque no mercado. Por exemplo, você pode construir um microsserviço que escuta uma fila do RabbitMQ e interage nativamente com APIs de Inteligência Artificial (como o Google Gemini) para gerar dados ou recomendações, salvando-os em um banco de dados NoSQL (como o MongoDB) de maneira 100% assíncrona.
 
 ### Minha Análise:
-O ecossistema Java é gigante, e a IA me ajudou a traçar um norte claro. O uso consistente de DTOs, tratamento global de exceções e a arquitetura em camadas são práticas que estou absorvendo. A ideia de já pensar a estrutura dos pacotes voltada para funcionalidades me prepara para a transição para microsserviços, algo que pretendo explorar a fundo nos meus próximos estudos de Spring Boot.
+> O ecossistema Java é gigante, e a IA me ajudou a traçar um norte claro. O uso consistente de DTOs, tratamento global de exceções e a arquitetura em camadas são práticas que estou absorvendo. A ideia de já pensar a estrutura dos pacotes voltada para funcionalidades me prepara para a transição para microsserviços, algo que pretendo explorar a fundo nos meus próximos estudos de Spring Boot.
 
 ### Prompt:
 Considerando o desenvolvimento de uma API de Autenticação (Auth-as-a-Service) em Java para o portfólio, como devo documentar as decisões de arquitetura e a implementação de padrões como OAuth2 e RBAC no README para impressionar recrutadores?
@@ -194,7 +193,7 @@ Aqui estão as estratégias detalhadas para estruturar o seu README:
 **5. Testabilidade** Finalize documentando a cobertura de testes do seu serviço de autenticação. Mencione a utilização de testes de integração que rodam contra um banco de dados em memória ou conteinerizado (como o Testcontainers), provando que o fluxo de ponta a ponta da sua aplicação é confiável antes de ir para a produção.
 
 ### Minha Análise:
-Essa visão arquitetural me ajudou perceber que documentar o uso de JWT e as decisões em torno de padrões de segurança não é apenas sobre mostrar que o código funciona, mas sobre provar maturidade ao explicar o "porquê". A dica de incluir diagramas visuais do fluxo vai enriquecer muito a leitura do meu README.
+> Essa visão arquitetural me ajudou perceber que documentar o uso de JWT e as decisões em torno de padrões de segurança não é apenas sobre mostrar que o código funciona, mas sobre provar maturidade ao explicar o "porquê". A dica de incluir diagramas visuais do fluxo vai enriquecer muito a leitura do meu README.
 
 ### Prompt:
 Se eu possuo uma API RESTful monolítica de um e-commerce ou loja virtual desenvolvida com Spring e JPA, quais seriam os passos práticos recomendados pelas fontes para quebrar essa aplicação em microsserviços? Quais 'cicatrizes' e desafios de mensageria eu devo destacar no portfólio durante essa migração?
@@ -235,7 +234,7 @@ Projetos e engenheiros de backend excepcionais não são avaliados pelo que cons
 - **A Vantagem da Assincronicidade no Caos:** Compartilhe a experiência de debug e o benefício de ter microsserviços desacoplados em cenários de queda. Mostre como, se um serviço consumidor (ex: emissão de notas fiscais) sair do ar, o serviço produtor (ex: fechamento de pedidos) não afunda com ele; o produtor continua publicando eventos na fila, os quais são armazenados em segurança para que o consumidor os processe um a um assim que retornar.
 
 ### Minha Análise:
-Ler sobre a refatoração baseada em funcionalidades me fez refletir diretamente sobre a API REST que implementei para o projeto "Baozi Store" durante a faculdade. Embora tenha nascido como um monólito clássico usando Spring e JPA, aplicar essas práticas de separação por domínios me dará a arquitetura base necessária para, no futuro, realizar a quebra desse sistema e implementar soluções robustas como API Gateway e Service Discovery.
+> Ler sobre a refatoração baseada em funcionalidades me fez refletir diretamente sobre a API REST que implementei para o projeto "Baozi Store" durante a faculdade. Embora tenha nascido como um monólito clássico usando Spring e JPA, aplicar essas práticas de separação por domínios me dará a arquitetura base necessária para, no futuro, realizar a quebra desse sistema e implementar soluções robustas como API Gateway e Service Discovery.
 
 ### Prompt:
 Para projetos de backend voltados à resolução de problemas reais e sustentabilidade, como iniciativas alinhadas aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU, qual é a melhor forma de apresentar a engenharia de requisitos e os diagramas UML para demonstrar visão de negócios aos recrutadores?
@@ -272,7 +271,7 @@ Aqui estão as melhores práticas extraídas das fontes para estruturar a sua ap
 Ao estruturar a documentação do seu projeto unindo a explicação clara do problema (os ODS da ONU), diagramas visuais de como os sistemas (ou microsserviços) se integram para resolvê-lo e a explicação de como o sistema suporta falhas, você demonstrará exatamente o nível de maturidade técnica e visão de produto que empresas seniores buscam.
 
 ### Minha Análise:
-A dica de substituir a lista monótona de requisitos por um "Pitch de Impacto" ressoa perfeitamente com o meu projeto "Olho d'Água", que visa o monitoramento da qualidade da água e se alinha ao ODS 6. Mostrar como a engenharia de software resolve problemas comunitários reais e usar diagramas UML para explicar o negócio transforma o que seria apenas um projeto em uma vitrine de habilidades profissionais.
+> A dica de substituir a lista monótona de requisitos por um "Pitch de Impacto" ressoa perfeitamente com o meu projeto "Olho d'Água", que visa o monitoramento da qualidade da água e se alinha ao ODS 6. Mostrar como a engenharia de software resolve problemas comunitários reais e usar diagramas UML para explicar o negócio transforma o que seria apenas um projeto em uma vitrine de habilidades profissionais.
 
 ### Prompt:
 Como um desenvolvedor focado em backend pode utilizar conhecimentos de prototipagem e design de interfaces (como no Figma) para documentar os contratos de API e apresentar o projeto de uma forma visualmente mais profissional no GitHub?
@@ -303,7 +302,7 @@ Como usar o Figma (Info externa): Utilize o Figma para desenhar diagramas bonito
 Unir a robustez de um código corporativo bem estruturado com uma documentação visualmente polida demonstra que você não é apenas um "digitador de código", mas um Engenheiro de Software com visão de produto.
 
 ### Minha Análise:
-Como um desenvolvedor focado em backend, mas que estuda UX/UI e criação de protótipos interativos no Figma, essa resposta me mostrou como conectar meus dois mundos. Desenhar mapas de contratos de API ligando o JSON diretamente aos componentes da interface não só facilita a comunicação no desenvolvimento, como mostra para o recrutador uma visão de produto que a maioria dos perfis técnicos não costuma demonstrar.
+> Como um desenvolvedor focado em backend, mas que estuda UX/UI e criação de protótipos interativos no Figma, essa resposta me mostrou como conectar meus dois mundos. Desenhar mapas de contratos de API ligando o JSON diretamente aos componentes da interface não só facilita a comunicação no desenvolvimento, como mostra para o recrutador uma visão de produto que a maioria dos perfis técnicos não costuma demonstrar.
 
 ### Prompt:
 Ao implementar comunicação assíncrona com RabbitMQ e Spring Boot, quais são os pontos de falha mais comuns (como perda de mensagens ou concorrência)? Como documentar a forma como lidei com esses erros no repositório?
@@ -342,4 +341,4 @@ Muitos candidatos possuem projetos bons, mas a apresentação e a ausência do r
 - **Demonstre Testes de Integração:** Por fim, inclua no README qual foi a estratégia de testes (Testcontainers, bancos de dados em memória) utilizada para garantir que toda essa infraestrutura de eventos realmente funcione de ponta a ponta sem falhas de integração no ambiente produtivo.
 
 ### Cicatriz de Aprendizado:
-O desenvolvimento em sistemas distribuídos traz armadilhas que raramente aparecem em cursos mais simples. A IA me alertou para problemas cruciais como a falta de durabilidade das filas e falhas de serialização. Registrar essas "cicatrizes" e detalhar como implementei resiliência no código será o meu principal foco na documentação técnica dos meus próximos desafios!
+> O desenvolvimento em sistemas distribuídos traz armadilhas que raramente aparecem em cursos mais simples. A IA me alertou para problemas cruciais como a falta de durabilidade das filas e falhas de serialização. Registrar essas "cicatrizes" e detalhar como implementei resiliência no código será o meu principal foco na documentação técnica dos meus próximos desafios!
