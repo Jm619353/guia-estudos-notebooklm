@@ -1,10 +1,8 @@
-# guia-estudos-notebooklm
-
 # 💬 Contexto:
 Esse repositório faz parte de um desafio de um bootcamp da DIO. O desafio propõe a criação de um caderno temático no Gemini Notebook (antigo NotebookLM), reunindo de três a cinco fontes abertas em texto ou PDF sobre um assunto determinado pelo o aluno. A partir desse material, são definidos objetivos de estudo, elaboradas perguntas estratégicas e testadas variações de prompts, registrando as respostas e suas referências. O resultado esperado é um miniguia de estudo com resumos estruturados, glossário de conceitos e um conjunto de prompts reutilizáveis que apoiem futuras revisões. A atividade enfatiza o uso da IA como ferramenta de aprendizagem ativa, aliando pensamento crítico, curadoria de fontes e organização do conhecimento.
 
 # 🎯 Objetivo:
-Criar segundo cérebro com o objetivo de servir como guia para enriquecer o Portfólio de um programador Java.
+Criar um segundo cérebro com o objetivo de servir como guia para enriquecer o Portfólio de um programador Java.
 
 # 🎬 Fontes De Vídeo:
 - https://youtu.be/pMR_48AF-A0?si=9WN8QtDXW_uAwHUU
@@ -18,6 +16,61 @@ Criar segundo cérebro com o objetivo de servir como guia para enriquecer o Port
 - https://medium.com/javarevisited/10-projects-you-can-build-to-learn-spring-boot-in-2025-4b72f8a17e3f
 - https://dev.to/devraj_singh7/the-portfolio-projects-that-actually-get-you-hired-in-2026-1l0e
 - https://www.reddit.com/r/Backend/comments/1py1rbf/backend_portfolio_project_ideas_that_go_beyond/
+
+# 📚 Miniguia de Estudo
+Este miniguia consolida os principais aprendizados extraídos das fontes e das interações com a IA, servindo como uma base de consulta rápida para o desenvolvimento de aplicações backend de nível corporativo e para a construção de um portfólio de destaque.
+
+## 1. Resumos Estruturados do Assunto
+### A Regra de "Um Projeto" (Qualidade sobre Quantidade)
+O mercado de engenharia de software valoriza profundidade. Em vez de construir dezenas de aplicações superficiais, o foco deve ser criar um sistema robusto que resolva um problema real (como plataformas de monitoramento comunitário ou sistemas de e-commerce complexos). O portfólio deve comprovar a capacidade de lidar com escalabilidade, deploy na nuvem e integração segura entre front-end e back-end.
+
+### Arquitetura Corporativa e Boas Práticas em Spring Boot
+Para se destacar, o código deve seguir uma separação rigorosa de responsabilidades (Controllers, Services e Repositories). O uso de DTOs é inegociável para proteger a estrutura do banco de dados. Além disso, padronizar as respostas da API e centralizar o tratamento de exceções (com @ControllerAdvice) demonstra maturidade e preocupação com quem vai consumir a aplicação.
+
+### Desacoplamento e Sistemas Distribuídos
+A transição de uma arquitetura monolítica para microsserviços exige ferramentas de gestão de infraestrutura. A implementação de um API Gateway para centralizar as requisições e de um Service Discovery para localização dinâmica dos serviços são passos fundamentais. A comunicação assíncrona utilizando Message Brokers (como RabbitMQ ou Kafka) aumenta a resiliência do sistema, permitindo que processos lentos ocorram em segundo plano sem travar a experiência do usuário.
+
+### Resiliência e Tolerância a Falhas
+Sistemas reais falham. Um diferencial gigantesco é projetar a aplicação para suportar quedas. Isso envolve configurar filas duráveis no RabbitMQ, garantir o processamento idempotente de eventos, gerenciar timeouts e criar estratégias de recuperação (fallbacks) para quando um serviço externo estiver indisponível.
+
+### Documentação Visual e Contratos de API
+Saber apresentar o projeto é tão importante quanto o código. Utilizar diagramas arquiteturais para explicar o fluxo de dados e ferramentas de prototipagem para criar "Mapas de Contrato" — conectando visualmente as respostas JSON aos componentes de interface — demonstra uma visão sistêmica e facilidade de comunicação entre times de backend e design.
+
+## 2. Glossário de Conceitos
+- **API Gateway:** Um servidor que atua como o único ponto de entrada para um sistema de microsserviços, responsável pelo roteamento de requisições, segurança e limitação de taxa (rate limiting).
+
+- **DTO (Data Transfer Object):** Um padrão de projeto usado para transportar dados entre subsistemas. No backend, evita que as entidades do banco de dados sejam expostas diretamente nas respostas da API.
+
+- **Idempotência:** A propriedade de uma operação que pode ser aplicada várias vezes sem alterar o resultado além da primeira aplicação. Crucial no processamento de mensagens assíncronas para evitar duplicação de dados em caso de falhas.
+
+- **Message Broker:** Um software intermediário que permite que aplicações, sistemas e serviços se comuniquem de forma assíncrona trocando mensagens (ex: RabbitMQ, Apache Kafka).
+
+- **OAuth2 com PKCE:** Um protocolo e fluxo de autorização padrão da indústria. A extensão PKCE (Proof Key for Code Exchange) garante que clientes públicos (como apps mobile e SPAs) possam se autenticar com segurança sem precisar armazenar senhas sensíveis no código.
+
+- **RBAC (Role-Based Access Control):** Um método de restringir o acesso à rede e aos recursos do sistema com base nas funções (roles) dos usuários individuais dentro de uma empresa.
+
+- **Service Discovery:** Um mecanismo que permite que os microsserviços se encontrem dinamicamente na rede sem a necessidade de configurar endereços IP fixos (hardcoded), geralmente utilizando ferramentas como o Eureka.
+
+- **ADR (Architecture Decision Record):** Um documento curto que captura uma decisão de arquitetura de software, explicando o contexto, a decisão tomada e as suas consequências.
+
+## 3. Prompts Reutilizáveis para Revisão e Troubleshooting
+Estes prompts foram desenhados para serem utilizados no NotebookLM, Gemini ou ChatGPT em estudos futuros, revisões de código ou durante o desenvolvimento de novas funcionalidades:
+
+- **Prompt para Revisão de Arquitetura Spring:**
+
+"Estou implementando uma nova funcionalidade no meu projeto Spring Boot focada em [descreva a funcionalidade]. Atuando como um Engenheiro de Software Sênior, revise a estrutura que planejo usar (Controller, Service, Repository, DTO). Quais padrões de projeto devo aplicar para garantir que este código seja escalável, testável e não vaze regras de negócio para a camada de apresentação?"
+
+- **Prompt para Troubleshooting de Mensageria:**
+
+"Estou enfrentando problemas com mensagens duplicadas e perdas de conexão na minha implementação de RabbitMQ com Java. Com base nas melhores práticas do mercado, crie um checklist de configuração e código (focando em durabilidade, roteamento e idempotência) para que eu possa debugar essa falha e documentar a solução no meu README."
+
+- **Prompt para Preparação de Entrevistas (Foco em Resiliência):**
+
+"Faça o papel de um recrutador técnico avaliando meu portfólio. Meu projeto principal é uma API RESTful que lida com dados sensíveis e integrações externas. Me faça 3 perguntas difíceis sobre como minha arquitetura lida com falhas, timeouts e segurança (OAuth2/JWT). Após as minhas respostas, forneça um feedback rigoroso de como eu poderia melhorar a minha argumentação."
+
+- **Prompt para Documentação e Visão de Produto:**
+
+"Preciso criar um Documento de Decisão Técnica (ADR) para explicar por que escolhi quebrar meu monólito atual em microsserviços. Gere um template profissional que eu possa preencher, e me dê exemplos práticos de como posso usar ferramentas de design e fluxogramas para ilustrar os contratos da API e facilitar a vida da equipe de frontend que vai consumir esses endpoints."
 
 # 🧑‍💻 Engenharia de Prompts e "Cicatrizes":
 ### Prompt:
