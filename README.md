@@ -172,3 +172,36 @@ Projetos e engenheiros de backend excepcionais não são avaliados pelo que cons
 - **Lidando com a Realidade das Filas (RabbitMQ/Kafka):** Descreva os desafios do desenvolvimento assíncrono real, como a configuração rigorosa para evitar perdas de dados através da criação de bindings entre exchanges, chaves de roteamento (routing keys) e queues.
 
 - **A Vantagem da Assincronicidade no Caos:** Compartilhe a experiência de debug e o benefício de ter microsserviços desacoplados em cenários de queda. Mostre como, se um serviço consumidor (ex: emissão de notas fiscais) sair do ar, o serviço produtor (ex: fechamento de pedidos) não afunda com ele; o produtor continua publicando eventos na fila, os quais são armazenados em segurança para que o consumidor os processe um a um assim que retornar.
+
+### Prompt:
+Para projetos de backend voltados à resolução de problemas reais e sustentabilidade, como iniciativas alinhadas aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU, qual é a melhor forma de apresentar a engenharia de requisitos e os diagramas UML para demonstrar visão de negócios aos recrutadores?
+
+### Resposta do Notebook:
+Embora as fontes fornecidas não mencionem explicitamente os Objetivos de Desenvolvimento Sustentável (ODS) da ONU ou a notação específica UML, elas oferecem diretrizes valiosas sobre como estruturar a documentação e os diagramas do seu portfólio para demonstrar forte visão de negócios e impacto no mundo real.
+
+Para projetos focados em sustentabilidade e resolução de problemas reais, a melhor forma de apresentar a engenharia de requisitos e os diagramas de arquitetura é focar no "porquê" das suas decisões e em como o sistema se comporta, em vez de apenas listar funcionalidades.
+
+Aqui estão as melhores práticas extraídas das fontes para estruturar a sua apresentação:
+**1. Substitua a Engenharia de Requisitos Clássica por um "Pitch de Impacto"** Recrutadores querem ver provas de que você consegue olhar para um problema real e construir algo que o resolva, demonstrando que você pensa além do código. No seu README, em vez de listas exaustivas de requisitos funcionais, estruture a engenharia de requisitos em seções diretas focadas no negócio:
+
+- **"O problema que isso resolve":** Comece descrevendo a dor real relacionada à sustentabilidade (ex: desperdício de recursos, gestão de doações).
+
+- **"O que o sistema faz":** Liste os fluxos principais do ponto de vista do usuário ou do negócio.
+
+- **Impacto no mundo real:** Projetos que demonstram impacto real (como ajudar negócios locais ou iniciativas comunitárias) mostram que você consegue pensar além do público de desenvolvedores, o que é um grande diferencial.
+
+**2. Utilize Diagramas de Arquitetura e Documentos de Decisão (ADRs)** Incluir documentos de decisão (Decision Docs) e diagramas arquiteturais é uma prática que raramente é vista até mesmo em sistemas de produção, o que fará o seu portfólio se destacar imensamente. Se for utilizar UML, priorize diagramas que mostrem a visão sistêmica:
+
+- **Diagramas de Componentes/Arquitetura:** Use-os para ilustrar como as peças se encaixam e interagem. Demonstre a separação clara em uma arquitetura em camadas: a camada de Apresentação (Controllers), a camada de Serviços (onde reside a lógica de negócios e tomada de decisão) e a camada de Acesso a Dados (Repositories conectando ao banco de dados).
+
+- **Fluxos de Microsserviços e Mensageria:** Se o seu projeto de sustentabilidade for grande, mostre visualmente como os clientes interagem com um API Gateway, como a segurança é gerenciada (ex: Keycloak para autenticação) e como os serviços se comunicam de forma síncrona ou assíncrona (usando filas como RabbitMQ).
+
+**3. Demonstre Complexidade e Cenários de Falha** Uma visão de negócios madura reconhece que os sistemas falham. Para impressionar recrutadores com a sua engenharia, não mostre apenas o "caminho feliz". Documente e diagrame os desafios de engenharia que você superou:
+
+- Explique no README como a sua arquitetura lida com timeouts, eventos duplicados, condições de corrida (race conditions) e estratégias de recuperação de dados.
+
+- Destaque a resiliência do sistema. Por exemplo, mostre em um diagrama de fluxo o que acontece se o serviço de processamento de doações falhar enquanto o serviço de recepção continua recebendo requisições de forma assíncrona.
+
+**4. Oculte o Banco de Dados com DTOs (Data Transfer Objects)** Do ponto de vista de design, mostre que você entende de segurança e padrões corporativos. Ao desenhar ou explicar a sua arquitetura, enfatize que as suas entidades de banco de dados não são vazadas para o cliente. Explique que você utiliza Response DTOs para expor apenas os campos que a aplicação parceira ou o front-end realmente precisam para operar, protegendo dados sensíveis.
+
+Ao estruturar a documentação do seu projeto unindo a explicação clara do problema (os ODS da ONU), diagramas visuais de como os sistemas (ou microsserviços) se integram para resolvê-lo e a explicação de como o sistema suporta falhas, você demonstrará exatamente o nível de maturidade técnica e visão de produto que empresas seniores buscam.
