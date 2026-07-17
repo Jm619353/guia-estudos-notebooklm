@@ -134,3 +134,41 @@ Aqui estão as estratégias detalhadas para estruturar o seu README:
 **4. Mostre Como o Sistema Falha e se Recupera** Projetos de back-end realmente impressionantes não são definidos apenas pelo que fazem quando tudo dá certo, mas sim por como lidam com falhas. Crie uma seção no README detalhando como a sua API lida com cenários adversos, como **timeouts, eventos duplicados, condições de corrida (race conditions) e quais são as suas estratégias de recuperação**.
 
 **5. Testabilidade** Finalize documentando a cobertura de testes do seu serviço de autenticação. Mencione a utilização de testes de integração que rodam contra um banco de dados em memória ou conteinerizado (como o Testcontainers), provando que o fluxo de ponta a ponta da sua aplicação é confiável antes de ir para a produção.
+
+### Prompt:
+Se eu possuo uma API RESTful monolítica de um e-commerce ou loja virtual desenvolvida com Spring e JPA, quais seriam os passos práticos recomendados pelas fontes para quebrar essa aplicação em microsserviços? Quais 'cicatrizes' e desafios de mensageria eu devo destacar no portfólio durante essa migração?
+
+### Resposta do Notebook:
+Para quebrar a sua API monolítica de e-commerce em microsserviços e impressionar recrutadores, a abordagem recomendada é estratégica e orientada a padrões corporativos. O foco não deve ser apenas "separar o código", mas sim demonstrar domínio sobre infraestrutura distribuída e resiliência.
+
+**Passos Práticos para a Migração**
+
+**1. Refatore para uma Estrutura Baseada em Funcionalidades (Feature-Based)** Antes de criar novos projetos isolados, reorganize o seu monólito atual. Agrupe o código por domínio ou funcionalidade (ex: criar pacotes dedicados apenas para pedido, produto, e usuario), onde cada pacote possua o seu próprio controller, service, repository e DTOs. A regra de ouro é que pacotes diferentes nunca devem se importar diretamente (por exemplo, não use @Autowire em um bean de usuário dentro do pacote de pedidos; a comunicação deve ser via interfaces ou APIs internas). Migrar a partir de um monólito estruturado dessa forma torna a separação em microsserviços autônomos muito mais fácil e menos dolorosa.
+
+**2. Implemente a Infraestrutura Central do Spring Cloud** Uma arquitetura de microsserviços real exige ferramentas de gestão que resolvam as dores da distribuição:
+
+- **API Gateway:** Implemente um ponto de entrada único (como o Spring Cloud Gateway) para lidar com todo o roteamento, interceptando requisições dos clientes e escondendo os endereços IP internos dos seus microsserviços.
+
+- **Service Discovery (Eureka):** Configure um servidor Eureka para que os seus microsserviços (como o serviço de pedidos ou de catálogo) se registrem dinamicamente e consigam se localizar sem usar endereços e portas hardcoded (fixas).
+
+- **Configuração Centralizada:** Utilize o Spring Cloud Config Server para extrair as configurações (application.properties ou .yml) de cada microsserviço local e gerenciá-las de forma centralizada em um único repositório.
+
+**3. Desacoplamento de Bancos de Dados e Comunicação** O poder dos microsserviços está na independência tecnológica e na não interferência.
+
+- Dê a cada microsserviço o seu próprio banco de dados (ex: MySQL ou PostgreSQL para dados transacionais de clientes, e MongoDB para um catálogo flexível de produtos).
+
+- Para comunicação síncrona estritamente necessária (ex: o serviço de pedidos validando o perfil do cliente no serviço de usuários), troque o antigo RestTemplate pelo WebClient ou novos clientes REST modernos oferecidos pelo Spring.
+
+- Para comunicação assíncrona, adicione um Message Broker (filas de mensagens).
+
+**"Cicatrizes" e Desafios de Mensageria para Destacar no Portfólio**
+
+Projetos e engenheiros de backend excepcionais não são avaliados pelo que constroem quando tudo dá certo, mas sim por como o **sistema deles falha e se recupera**. No seu README e nas entrevistas, destaque as seguintes 'cicatrizes' de batalha:
+
+- **Resiliência e Tolerância a Falhas:** Documente explicitamente como a sua arquitetura lida com timeouts, eventos duplicados, condições de corrida (race conditions) e estratégias de recuperação em falhas.
+
+- **A Complexidade de Manter Dados Consistentes:** Destaque o desafio de manter a integridade transacional de forma assíncrona, sem depender de transações convencionais de banco de dados, quando produtores e consumidores estão processando regras de negócio em partes diferentes do mundo e com cargas de trabalho variadas. Compreender as diferenças arquitetônicas entre trabalhar com o protocolo AMQP (do RabbitMQ) e o Kafka é um excelente bônus.
+
+- **Lidando com a Realidade das Filas (RabbitMQ/Kafka):** Descreva os desafios do desenvolvimento assíncrono real, como a configuração rigorosa para evitar perdas de dados através da criação de bindings entre exchanges, chaves de roteamento (routing keys) e queues.
+
+- **A Vantagem da Assincronicidade no Caos:** Compartilhe a experiência de debug e o benefício de ter microsserviços desacoplados em cenários de queda. Mostre como, se um serviço consumidor (ex: emissão de notas fiscais) sair do ar, o serviço produtor (ex: fechamento de pedidos) não afunda com ele; o produtor continua publicando eventos na fila, os quais são armazenados em segurança para que o consumidor os processe um a um assim que retornar.
